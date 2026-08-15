@@ -13,9 +13,49 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import dearpygui.dearpygui as dpg
+
+
 class DqApplication:
     def __init__(self):
-        pass
+        """
+        Application management class.
+        """
+        # Initialise Dear PyGui
+        self._init_dpg()
+
+        # Initialise UI
+        self._init_ui()
+
+    def _init_dpg(self):
+        """
+        Initialises the dearpygui library.
+        """
+        dpg.create_context()
+
+    def _init_ui(self):
+        """
+        Initialises the user interface.
+        """
+        # Create a viewport, which is a system window.
+        dpg.create_viewport(
+            title = "DrivingQuestions",
+            width=600,
+            height=400
+        )
+
+        # The UI has been initialised; finish dearpygui initialisation.
+        dpg.setup_dearpygui()
 
     def mainloop(self):
-        pass
+        """
+        Performs the UI's main loop. Does not return unless the UI terminates.
+        """
+        # Display the viewport we created earlier
+        dpg.show_viewport()
+
+        # Start dearpygui's main loop
+        dpg.start_dearpygui()
+
+        # Destroy the UI
+        dpg.destroy_context()
