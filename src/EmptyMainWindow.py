@@ -54,3 +54,14 @@ class EmptyMainWindow:
         dpg.show_item(self._item_window)
         dpg.set_primary_window(self._item_window, True)
         self._enabled = True
+
+    def disable(self):
+        """
+        Disables the window, and unsets it as primary window.
+        """
+        if not self._enabled:
+            return
+
+        dpg.set_primary_window(self._item_window, False)
+        dpg.hide_item(self._item_window)
+        self._enabled = False
