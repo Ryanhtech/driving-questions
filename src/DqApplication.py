@@ -17,6 +17,9 @@ import dearpygui.dearpygui as dpg
 
 from EmptyMainWindow import EmptyMainWindow
 
+from StyleManager import StyleManager
+from DatabaseLoader import DatabaseLoader
+
 class DqApplication:
     def __init__(self):
         """
@@ -24,6 +27,12 @@ class DqApplication:
         """
         # Initialise Dear PyGui
         self._init_dpg()
+
+        # Initialise global variables
+        self._question_data: dict[str, list] = { }
+
+        # Initialise styles
+        self._init_styles()
 
         # Initialise file pickers
         self._init_file_pickers()
@@ -36,6 +45,13 @@ class DqApplication:
         Initialises the dearpygui library.
         """
         dpg.create_context()
+
+    def _init_styles(self):
+        """
+        Initialises UI styles.
+        """
+        self._style_manager = StyleManager()
+        self._style_manager.set_global_theme(self._style_manager.style_default)
 
     def _init_file_pickers(self):
         """
@@ -96,7 +112,11 @@ class DqApplication:
 
     ## Callbacks ##
     def _callback_database_file_picker_select(self, sender, app_data):
-        pass
+        # Retrieve the database file path
+        file_path = list(app_data["selections"].values())[0]
+
+        # Refresh the data
+        self._question_data = DatabaseLoader.get_database_data(file_path)
 
     def mainloop(self):
         """
