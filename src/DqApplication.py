@@ -15,6 +15,7 @@
 
 import dearpygui.dearpygui as dpg
 
+from EmptyMainWindow import EmptyMainWindow
 
 class DqApplication:
     def __init__(self):
@@ -39,10 +40,15 @@ class DqApplication:
         """
         # Create a viewport, which is a system window.
         dpg.create_viewport(
-            title = "DrivingQuestions",
+            title="DrivingQuestions",
             width=600,
             height=400
         )
+
+        ## Window creation ##
+        # Create the EmptyMainWindow
+        self._window_main_empty = EmptyMainWindow()
+        self._window_main_empty.enable()
 
         # The UI has been initialised; finish dearpygui initialisation.
         dpg.setup_dearpygui()
