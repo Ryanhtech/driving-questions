@@ -41,9 +41,9 @@ class DatabaseLoader:
             cur.execute("""
                 SELECT question.question, question.answer
                 FROM group_map
-                WHERE group_map.group = ?
-                JOIN question ON group_map.question = question.id
-            """)
+                JOIN question ON group_map.question_id = question.id
+                WHERE group_map.group_id = ?
+            """, (group[0],))
             questions = cur.fetchall()
 
             question_list = []
