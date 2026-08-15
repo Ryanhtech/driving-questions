@@ -45,6 +45,9 @@ class DqApplication:
             height=400
         )
 
+        # Initialise the menu
+        self._init_menu()
+
         ## Window creation ##
         # Create the EmptyMainWindow
         self._window_main_empty = EmptyMainWindow()
@@ -52,6 +55,22 @@ class DqApplication:
 
         # The UI has been initialised; finish dearpygui initialisation.
         dpg.setup_dearpygui()
+
+    def _init_menu(self):
+        """
+        Initialise the viewport's menu.
+        """
+        with dpg.viewport_menu_bar():
+            with dpg.menu(label="Fichier"):
+                dpg.add_menu_item(
+                    label="Ouvrir une base..."
+                )
+
+                dpg.add_separator()
+
+                dpg.add_menu_item(
+                    label="Quitter DrivingQuestions"
+                )
 
     def mainloop(self):
         """
