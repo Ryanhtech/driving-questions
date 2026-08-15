@@ -14,6 +14,7 @@
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import dearpygui.dearpygui as dpg
+import dearpygui.demo as dpg_demo
 
 from EmptyMainWindow import EmptyMainWindow
 
@@ -109,6 +110,24 @@ class DqApplication:
                 dpg.add_menu_item(
                     label="Quitter DrivingQuestions"
                 )
+
+            with dpg.menu(label="Aide"):
+                dpg.add_menu_item(label="A propos de DrivingQuestions...")
+                dpg.add_menu_item(label="A propos de Dear PyGui...", callback=lambda: dpg.show_about())
+
+                dpg.add_separator()
+
+                with dpg.menu(label="Débogage"):
+                    dpg.add_menu_item(label="Menu de débogage", callback=lambda: dpg.show_debug())
+                    dpg.add_menu_item(label="Gestionnaire d'éléments", callback=lambda: dpg.show_item_registry())
+                    dpg.add_menu_item(label="Gestionnaire de polices", callback=lambda: dpg.show_font_manager())
+                    dpg.add_menu_item(label="Gestionnaire de styles", callback=lambda: dpg.show_style_editor())
+                    dpg.add_menu_item(label="Statistiques de l'interface", callback=lambda: dpg.show_metrics())
+
+                    dpg.add_separator()
+
+                    dpg.add_menu_item(label="Documentation de Dear PyGui", callback=lambda: dpg.show_documentation())
+                    dpg.add_menu_item(label="Démonstration de Dear PyGui", callback=lambda: dpg_demo.show_demo())
 
     ## Callbacks ##
     def _callback_database_file_picker_select(self, sender, app_data):
