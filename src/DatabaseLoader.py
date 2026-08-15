@@ -52,4 +52,5 @@ class DatabaseLoader:
 
             data[group[1]] = question_list
 
+        con.close()
         return data
