@@ -25,6 +25,9 @@ class DqApplication:
         # Initialise Dear PyGui
         self._init_dpg()
 
+        # Initialise file pickers
+        self._init_file_pickers()
+
         # Initialise UI
         self._init_ui()
 
@@ -33,6 +36,24 @@ class DqApplication:
         Initialises the dearpygui library.
         """
         dpg.create_context()
+
+    def _init_file_pickers(self):
+        """
+        Initialises the file pickers.
+        """
+        # Create the datanase selection file picker
+        with dpg.file_dialog(
+            directory_selector=False,
+            show=False,
+            callback=self._callback_database_file_picker_select,
+            width=700,
+            height=400,
+            modal=True,
+            min_size=(700, 400),
+            max_size=(700, 400),
+            label="Ouvrir une base"
+        ) as self._item_file_picker_database:
+            dpg.add_file_extension(".dqdb", label="Base DrivingQuestions")
 
     def _init_ui(self):
         """
@@ -63,7 +84,8 @@ class DqApplication:
         with dpg.viewport_menu_bar():
             with dpg.menu(label="Fichier"):
                 dpg.add_menu_item(
-                    label="Ouvrir une base..."
+                    label="Ouvrir une base...",
+                    callback=lambda: dpg.show_item(self._item_file_picker_database)
                 )
 
                 dpg.add_separator()
@@ -71,6 +93,10 @@ class DqApplication:
                 dpg.add_menu_item(
                     label="Quitter DrivingQuestions"
                 )
+
+    ## Callbacks ##
+    def _callback_database_file_picker_select(self, sender, app_data):
+        pass
 
     def mainloop(self):
         """
