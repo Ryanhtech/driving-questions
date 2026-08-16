@@ -20,6 +20,8 @@ from EmptyMainWindow import EmptyMainWindow
 
 from StyleManager import StyleManager
 from DatabaseLoader import DatabaseLoader
+from TextureManager import TextureManager
+from textures.textures import DQ_TEXTURES
 
 class DqApplication:
     def __init__(self):
@@ -31,6 +33,9 @@ class DqApplication:
 
         # Initialise global variables
         self._question_data: dict[str, list] = { }
+
+        # Initialise textures
+        self._init_textures()
 
         # Initialise styles
         self._init_styles()
@@ -46,6 +51,13 @@ class DqApplication:
         Initialises the dearpygui library.
         """
         dpg.create_context()
+
+    def _init_textures(self):
+        """
+        Initialises a [TextureManager] object and uses it to load the app's textures.
+        """
+        self._texture_manager = TextureManager()
+        self._texture_manager.load_textures(DQ_TEXTURES)
 
     def _init_styles(self):
         """
