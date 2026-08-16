@@ -142,7 +142,7 @@ class DqApplication:
         Performs the UI's main loop. Does not return unless the UI terminates.
         """
         # Display the viewport we created earlier
-        dpg.show_viewport()
+        dpg.show_viewport(maximized=True)
 
         # Start dearpygui's main loop
         dpg.start_dearpygui()
