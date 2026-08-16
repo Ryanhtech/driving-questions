@@ -21,3 +21,9 @@ class Question:
         """
         self._question = question
         self._answer = answer
+
+    def get_question(self):
+        return self._question
+
+    def get_answer(self):
+        return self._answer

@@ -84,7 +84,7 @@ class DqApplication:
             max_size=(700, 400),
             label="Ouvrir une base"
         ) as self._item_file_picker_database:
-            dpg.add_file_extension(".dqdb", label="Base DrivingQuestions")
+            dpg.add_file_extension(".dqdb", label="Base DrivingQuestions", color=(0, 0, 120))
 
     def _init_ui(self):
         """
@@ -93,8 +93,8 @@ class DqApplication:
         # Create a viewport, which is a system window.
         dpg.create_viewport(
             title="DrivingQuestions",
-            width=600,
-            height=400
+            width=800,
+            height=500
         )
 
         # Initialise callbacks
@@ -133,6 +133,16 @@ class DqApplication:
 
                 dpg.add_menu_item(
                     label="Quitter DrivingQuestions"
+                )
+
+            with dpg.menu(label="Outils"):
+                dpg.add_menu_item(
+                    label="Sélectionner un groupe de questions aléatoire"
+                )
+
+            with dpg.menu(label="Affichage"):
+                dpg.add_menu_item(
+                    label="Plein écran"
                 )
 
             with dpg.menu(label="Aide"):
@@ -174,7 +184,7 @@ class DqApplication:
         file_path = list(app_data["selections"].values())[0]
 
         # Refresh the data
-        self._question_data = DatabaseLoader.get_database_data(file_path)
+        self._set_question_data(DatabaseLoader.get_database_data(file_path))
 
     def _callback_viewport_resize(self):
         """
