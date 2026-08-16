@@ -17,11 +17,13 @@ import dearpygui.dearpygui as dpg
 import dearpygui.demo as dpg_demo
 
 from EmptyMainWindow import EmptyMainWindow
+from MainWindow import MainWindow
 
 from StyleManager import StyleManager
 from DatabaseLoader import DatabaseLoader
 from TextureManager import TextureManager
 from textures.textures import DQ_TEXTURES
+
 
 class DqApplication:
     def __init__(self):
@@ -30,9 +32,6 @@ class DqApplication:
         """
         # Initialise Dear PyGui
         self._init_dpg()
-
-        # Initialise global variables
-        self._question_data: dict[str, list] = { }
 
         # Initialise textures
         self._init_textures()
@@ -45,6 +44,9 @@ class DqApplication:
 
         # Initialise UI
         self._init_ui()
+
+        # Initialise question data
+        self._set_question_data({})
 
     def _init_dpg(self):
         """
@@ -110,7 +112,8 @@ class DqApplication:
         ## Window creation ##
         # Create the EmptyMainWindow
         self._window_main_empty = EmptyMainWindow(self._style_manager)
-        self._window_main_empty.enable()
+
+        self._window_main = MainWindow()
 
         # The UI has been initialised; finish dearpygui initialisation.
         dpg.setup_dearpygui()
@@ -149,6 +152,21 @@ class DqApplication:
 
                     dpg.add_menu_item(label="Documentation de Dear PyGui", callback=lambda: dpg.show_documentation())
                     dpg.add_menu_item(label="Démonstration de Dear PyGui", callback=lambda: dpg_demo.show_demo())
+
+    ## Helper functions ##
+    def _set_question_data(self, data: dict[str, list]):
+        """
+        Sets the question data (stored in MainWindow), and refreshes the UI.
+        """
+        self._window_main.set_question_data(data)
+
+        if len(data) <= 0:
+            # There are no questions.
+            self._window_main.disable()
+            self._window_main_empty.enable()
+        else:
+            self._window_main_empty.disable()
+            self._window_main.enable()
 
     ## Callbacks ##
     def _callback_database_file_picker_select(self, sender, app_data):
