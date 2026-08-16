@@ -16,17 +16,23 @@
 import dearpygui.dearpygui as dpg
 
 from ui_utils import align_item
+from textures import textures
+from StyleManager import StyleManager
 
 class EmptyMainWindow:
-    def __init__(self):
+    def __init__(self, style_manager: StyleManager):
         """
         This window is displayed when there is no loaded database.
         """
         # Create UI attributes
         self._enabled = False
+        self._style_manager = style_manager
 
         # Initialise the window
         self._init_window()
+
+        # Set the styles
+        self._style_manager.set_item_style(self._item_window, self._style_manager.style_no_window_padding)
 
     def _init_window(self):
         """
@@ -51,9 +57,13 @@ class EmptyMainWindow:
                 height=46
             ) as self._item_copyright_text_group:
                 self._item_copyright_text = dpg.add_text(
-                    "   DrivingQuestions\n   Copyright (c) 2026 Ryanhtech Labs.",
+                    "   DrivingQuestions\n   Copyright (c) 2026 Ryanhtech Labs",
                     wrap=500
                 )
+
+            self._item_logo = dpg.add_image(
+                texture_tag=textures.TEX_DQ_LOGO_128
+            )
 
     def enable(self):
         """
@@ -84,3 +94,4 @@ class EmptyMainWindow:
         # Align the items in the window
         align_item(self._item_welcome_child_window, "mm")
         align_item(self._item_copyright_text_group, "bl")
+        align_item(self._item_logo, "br")

@@ -109,7 +109,7 @@ class DqApplication:
 
         ## Window creation ##
         # Create the EmptyMainWindow
-        self._window_main_empty = EmptyMainWindow()
+        self._window_main_empty = EmptyMainWindow(self._style_manager)
         self._window_main_empty.enable()
 
         # The UI has been initialised; finish dearpygui initialisation.
