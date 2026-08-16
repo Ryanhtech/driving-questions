@@ -28,6 +28,9 @@ def align_coord(item_size: tuple, parent_size: tuple, pos: str) -> list:
     elif pos == "mm":
         _new_x = (parent_size[0] // 2) - (item_size[0] // 2)
         _new_y = (parent_size[1] // 2) - (item_size[1] // 2)
+    elif pos == "bl":
+        _new_x = 0
+        _new_y = parent_size[1] - item_size[1]
     elif pos == "br":
         _new_x = parent_size[0] - item_size[0]
         _new_y = parent_size[1] - item_size[1]
