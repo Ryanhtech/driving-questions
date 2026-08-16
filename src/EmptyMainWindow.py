@@ -15,6 +15,8 @@
 
 import dearpygui.dearpygui as dpg
 
+from ui_utils import align_item
+
 class EmptyMainWindow:
     def __init__(self):
         """
@@ -44,6 +46,15 @@ class EmptyMainWindow:
                     pos=[10, 80]
                 )
 
+            with dpg.group(
+                width=510,
+                height=46
+            ) as self._item_copyright_text_group:
+                self._item_copyright_text = dpg.add_text(
+                    "   DrivingQuestions\n   Copyright (c) 2026 Ryanhtech Labs.",
+                    wrap=500
+                )
+
     def enable(self):
         """
         Enable the window, and set it as primary window.
@@ -65,3 +76,11 @@ class EmptyMainWindow:
         dpg.set_primary_window(self._item_window, False)
         dpg.hide_item(self._item_window)
         self._enabled = False
+
+    def refresh(self):
+        """
+        Refreshes the user interface.
+        """
+        # Align the items in the window
+        align_item(self._item_welcome_child_window, "mm")
+        align_item(self._item_copyright_text_group, "bl")
