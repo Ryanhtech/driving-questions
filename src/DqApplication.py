@@ -150,13 +150,13 @@ class DqApplication:
         """
         Callback to be called when the viewport's size changes.
         """
-        pass
+        self._window_main_empty.refresh()
 
     def _callback_start(self):
         """
         Callback to be called when the UI starts.
         """
-        pass
+        self._window_main_empty.refresh()
 
     def mainloop(self):
         """
