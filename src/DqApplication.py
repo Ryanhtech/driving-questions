@@ -83,6 +83,15 @@ class DqApplication:
             height=400
         )
 
+        # Initialise callbacks
+        dpg.set_viewport_resize_callback(
+            lambda a, b, c: self._callback_viewport_resize()
+        )
+        dpg.set_frame_callback(
+            frame=3,
+            callback=lambda: self._callback_start()
+        )
+
         # Initialise the menu
         self._init_menu()
 
@@ -136,6 +145,18 @@ class DqApplication:
 
         # Refresh the data
         self._question_data = DatabaseLoader.get_database_data(file_path)
+
+    def _callback_viewport_resize(self):
+        """
+        Callback to be called when the viewport's size changes.
+        """
+        pass
+
+    def _callback_start(self):
+        """
+        Callback to be called when the UI starts.
+        """
+        pass
 
     def mainloop(self):
         """
