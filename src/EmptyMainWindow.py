@@ -47,7 +47,7 @@ class EmptyMainWindow:
                 resizable_y=False
             ) as self._item_welcome_child_window:
                 self._item_welcome_text = dpg.add_text(
-                    "Aucune base de questions chargée.\nPour ouvrir une base, utilisez la commande Fichier > Ouvrir une base.",
+                    "Aucun groupe de questions n'est chargé.\nVous pouvez en charger à partir d'une base en utilisant la commande Fichier > Ouvrir une base.",
                     wrap=380,
                     pos=[10, 80]
                 )
