@@ -13,6 +13,8 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import random
+
 import dearpygui.dearpygui as dpg
 
 class MainWindow:
@@ -90,6 +92,12 @@ class MainWindow:
         """
         self._selected_group = group
         self._refresh_ui()
+
+    def select_random_group(self):
+        """
+        Selects a random group and refreshes the UI.
+        """
+        self._select_group(random.choice(list(self._question_data.keys())))
 
     def set_question_data(self, question_data: dict[str, list]):
         """

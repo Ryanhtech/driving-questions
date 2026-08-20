@@ -137,7 +137,8 @@ class DqApplication:
 
             with dpg.menu(label="Outils"):
                 dpg.add_menu_item(
-                    label="Sélectionner un groupe de questions aléatoire"
+                    label="Sélectionner un groupe de questions aléatoire",
+                    callback=lambda a, b, c: self._window_main.select_random_group()
                 )
 
             with dpg.menu(label="Affichage"):
