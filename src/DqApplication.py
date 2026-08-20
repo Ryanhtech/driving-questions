@@ -45,6 +45,11 @@ class DqApplication:
         # Initialise UI
         self._init_ui()
 
+        # Initialise local variables
+        self._menu_items_to_toggle = [
+            self._item_menu_select_random_question_group
+        ]
+
         # Initialise question data
         self._set_question_data({})
 
@@ -136,7 +141,7 @@ class DqApplication:
                 )
 
             with dpg.menu(label="Outils"):
-                dpg.add_menu_item(
+                self._item_menu_select_random_question_group = dpg.add_menu_item(
                     label="Sélectionner un groupe de questions aléatoire",
                     callback=lambda a, b, c: self._window_main.select_random_group()
                 )
@@ -170,14 +175,22 @@ class DqApplication:
         Sets the question data (stored in MainWindow), and refreshes the UI.
         """
         self._window_main.set_question_data(data)
+        empty = len(data) <= 0
 
-        if len(data) <= 0:
+        if empty:
             # There are no questions.
             self._window_main.disable()
             self._window_main_empty.enable()
         else:
             self._window_main_empty.disable()
             self._window_main.enable()
+
+        # Enable or disable menu items depending on the status
+        for item in self._menu_items_to_toggle:
+            if empty:
+                dpg.disable_item(item)
+            else:
+                dpg.enable_item(item)
 
     ## Callbacks ##
     def _callback_database_file_picker_select(self, sender, app_data):
