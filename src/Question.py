@@ -15,7 +15,7 @@
 
 
 class Question:
-    def __init__(self, question: str, answer: str):
+    def __init__(self, question: str, answer: str | None):
         """
         A Question object containing a question and an answer.
         """

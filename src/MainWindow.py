@@ -83,8 +83,11 @@ class MainWindow:
                         question_entity = selected_questions[question_count]
                         dpg.add_text(question_entity.get_question())
 
-                        with dpg.tree_node(label="Réponse"):
-                            dpg.add_text(question_entity.get_answer())
+                        answer = question_entity.get_answer()
+
+                        if answer is not None:
+                            with dpg.tree_node(label="Réponse"):
+                                dpg.add_text(answer)
 
     def _select_group(self, group: str):
         """
