@@ -137,7 +137,8 @@ class DqApplication:
                 dpg.add_separator()
 
                 dpg.add_menu_item(
-                    label="Quitter DrivingQuestions"
+                    label="Quitter DrivingQuestions",
+                    callback=lambda a, b, c: dpg.stop_dearpygui()
                 )
 
             with dpg.menu(label="Outils"):
