@@ -94,7 +94,7 @@ class MainWindow:
         Selects a group and refreshes the UI.
         """
         self._selected_group = group
-        self._refresh_ui()
+        self.refresh()
 
     def select_random_group(self):
         """
@@ -107,7 +107,7 @@ class MainWindow:
         Sets the question data, and refreshes the window.
         """
         self._question_data = question_data
-        self._refresh_ui()
+        self.refresh()
 
     def enable(self):
         """
@@ -131,7 +131,7 @@ class MainWindow:
         dpg.hide_item(self._window)
         self._enabled = False
 
-    def _refresh_ui(self):
+    def refresh(self):
         """
         Refreshes the UI.
         """

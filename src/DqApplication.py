@@ -208,6 +208,7 @@ class DqApplication:
         Callback to be called when the viewport's size changes.
         """
         self._window_main_empty.refresh()
+        self._window_main.refresh()
 
     def _callback_start(self):
         """
