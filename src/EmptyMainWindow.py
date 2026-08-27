@@ -15,6 +15,7 @@
 
 import dearpygui.dearpygui as dpg
 
+from version import VERSION_STR
 from ui_utils import align_item
 from textures import textures
 from StyleManager import StyleManager
@@ -57,7 +58,7 @@ class EmptyMainWindow:
                 height=46
             ) as self._item_copyright_text_group:
                 self._item_copyright_text = dpg.add_text(
-                    "   DrivingQuestions\n   Copyright (c) 2026 Ryanhtech Labs",
+                    f"   DrivingQuestions {VERSION_STR}\n   Copyright (c) 2026 Ryanhtech Labs",
                     wrap=500
                 )
 

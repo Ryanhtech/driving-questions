@@ -24,6 +24,7 @@ from StyleManager import StyleManager
 from DatabaseLoader import DatabaseLoader
 from TextureManager import TextureManager
 from textures.textures import DQ_TEXTURES
+from version import VERSION_STR
 
 
 class DqApplication:
@@ -98,7 +99,7 @@ class DqApplication:
         """
         # Create a viewport, which is a system window.
         dpg.create_viewport(
-            title="DrivingQuestions",
+            title=f"Ryanhtech DrivingQuestions {VERSION_STR}",
             width=800,
             height=500,
             small_icon="textures/drivingquestions_logo_clipped_48.png",

@@ -16,6 +16,7 @@
 import dearpygui.dearpygui as dpg
 
 from textures import textures
+from version import VERSION_STR
 
 
 class AboutWindow:
@@ -38,7 +39,7 @@ class AboutWindow:
                 dpg.add_image(textures.TEX_DQ_LOGO_128)
 
                 with dpg.group():
-                    dpg.add_text("Ryanhtech DrivingQuestions\nCopyright (c) 2026 Ryanhtech Labs.")
+                    dpg.add_text(f"Ryanhtech DrivingQuestions version {VERSION_STR}\nCopyright (c) 2026 Ryanhtech Labs.")
                     dpg.add_text("Licensed under the GNU GPL version 3.0.")
 
     def show(self):
