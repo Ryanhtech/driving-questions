@@ -100,7 +100,9 @@ class DqApplication:
         dpg.create_viewport(
             title="DrivingQuestions",
             width=800,
-            height=500
+            height=500,
+            small_icon="textures/drivingquestions_logo_clipped_48.png",
+            large_icon="textures/drivingquestions_logo_clipped_48.png"
         )
 
         # Initialise callbacks
