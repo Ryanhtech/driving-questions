@@ -15,6 +15,9 @@
 
 import dearpygui.dearpygui as dpg
 
+from textures import textures
+
+
 class AboutWindow:
     def __init__(self):
         # Initialise UI
@@ -26,12 +29,17 @@ class AboutWindow:
         """
         with dpg.window(
             label="À propos de DrivingQuestions",
-            width=600,
-            height=200,
+            width=450,
+            height=172,
             modal=True,
             show=False
         ) as self._window:
-            dpg.add_text("Hello, World!")
+            with dpg.group(horizontal=True, horizontal_spacing=16):
+                dpg.add_image(textures.TEX_DQ_LOGO_128)
+
+                with dpg.group():
+                    dpg.add_text("Ryanhtech DrivingQuestions\nCopyright (c) 2026 Ryanhtech Labs.")
+                    dpg.add_text("Licensed under the GNU GPL version 3.0.")
 
     def show(self):
         """
