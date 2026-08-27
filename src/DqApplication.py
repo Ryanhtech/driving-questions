@@ -18,6 +18,7 @@ import dearpygui.demo as dpg_demo
 
 from EmptyMainWindow import EmptyMainWindow
 from MainWindow import MainWindow
+from AboutWindow import AboutWindow
 
 from StyleManager import StyleManager
 from DatabaseLoader import DatabaseLoader
@@ -115,10 +116,11 @@ class DqApplication:
         self._init_menu()
 
         ## Window creation ##
-        # Create the EmptyMainWindow
         self._window_main_empty = EmptyMainWindow(self._style_manager)
 
         self._window_main = MainWindow()
+
+        self._window_about = AboutWindow()
 
         # The UI has been initialised; finish dearpygui initialisation.
         dpg.setup_dearpygui()
@@ -153,7 +155,7 @@ class DqApplication:
                 )
 
             with dpg.menu(label="Aide"):
-                dpg.add_menu_item(label="A propos de DrivingQuestions...")
+                dpg.add_menu_item(label="A propos de DrivingQuestions...", callback=lambda: self._window_about.show())
                 dpg.add_menu_item(label="A propos de Dear PyGui...", callback=lambda: dpg.show_about())
 
                 dpg.add_separator()

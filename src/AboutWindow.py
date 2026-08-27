@@ -28,6 +28,13 @@ class AboutWindow:
             label="À propos de DrivingQuestions",
             width=600,
             height=200,
-            modal=True
+            modal=True,
+            show=False
         ) as self._window:
             dpg.add_text("Hello, World!")
+
+    def show(self):
+        """
+        Shows the window.
+        """
+        dpg.show_item(self._window)
