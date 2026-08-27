@@ -3,6 +3,8 @@
 
 DrivingQuestions est un logiciel simple, conçu pour vous aider à réviser les questions pouvant être posées lors de l'examen pratique du permis de conduire français (catégorie B).
 
+![Capture d'écran de la fenêtre principale de DrivingQuestions](https://github.com/Ryanhtech/driving-questions/blob/main/screenshots/main_window.png)
+
 ## Comment se déroulent les questions de l'examen pratique du permis de conduire ?
 
 Lors de l'examen pratique du permis de conduire, en fonction des deux derniers chiffres du compteur kilométrique du véhicule d'examen, l'examinateur.ice vous posera **trois** questions :
