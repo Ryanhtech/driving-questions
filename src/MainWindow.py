@@ -66,7 +66,6 @@ class MainWindow:
                                     )
 
             with dpg.child_window(width=-1, height=-1):
-                selected_group = self._selected_group
                 selected_questions = None
 
                 if self._selected_group is not None:
